@@ -1,0 +1,1 @@
+export { PrivateDashboard } from './private-dashboard'
