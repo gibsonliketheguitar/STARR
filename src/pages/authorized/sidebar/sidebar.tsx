@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { styled } from '@mui/material';
 
 import Box from '@mui/material/Box';
@@ -20,11 +20,19 @@ import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import SpeedOutlinedIcon from '@mui/icons-material/SpeedOutlined';
 import SubscriptionsOutlinedIcon from '@mui/icons-material/SubscriptionsOutlined';
-import { I_SidebarStore, useSideBarStore } from '.';
+import { useSideBarStore } from '.';
+import { useUserStore } from '@pages/store/userStore';
 
 export function Sidebar() {
-  const isOpen = useSideBarStore((state: any) => state.isOpen)
+  const navigate = useNavigate()
   const handleToggleSidebar = useSideBarStore((state: any) => state.toggleSideBar)
+  const isOpen = useSideBarStore((state: any) => state.isOpen)
+  const logout = useUserStore((state: any) => state.logout)
+
+  const handleLogout = () => {
+    logout()
+    navigate('/login', { replace: true })
+  }
 
   const DrawerHeader = styled('div')(({ theme }) => ({
     display: 'flex',
@@ -47,7 +55,7 @@ export function Sidebar() {
         { title: 'schedule task', icon: AccessTimeOutlinedIcon, path: '/scheduler' }
       ]
     },
-    { title: 'logout', icon: ExitToAppOutlinedIcon, path: "" }
+    { title: 'logout', icon: ExitToAppOutlinedIcon, path: "", handleOnClick: handleLogout }
   ]
 
   return (
@@ -87,10 +95,11 @@ export function Sidebar() {
       </List>
       <Divider />
       <List>
-        {SIDEBAR.map(({ title, icon, path }, index) => (
+        {SIDEBAR.map(({ title, icon, path, handleOnClick }, index) => (
           <ListItem key={title} disablePadding sx={{ display: 'block' }}>
             <Link to={path}>
               <ListItemButton
+                onClick={handleOnClick}
                 sx={{
                   display: 'flex',
                   minHeight: 48,

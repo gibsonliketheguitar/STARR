@@ -1,11 +1,14 @@
 import { create } from 'zustand'
 
-export interface I_SidebarStore {
+export type T_SidebarState = {
   isOpen: boolean,
+}
+
+export type T_SidebarAction = {
   toggleSideBar: () => void
 }
 
-export const useSideBarStore = create((set) => ({
+export const useSideBarStore = create<T_SidebarState & T_SidebarAction>((set, get) => ({
   isOpen: false,
-  toggleSideBar: () => set((state: I_SidebarStore) => ({ isOpen: !state.isOpen }))
+  toggleSideBar: () => set({ isOpen: !get().isOpen })
 }))

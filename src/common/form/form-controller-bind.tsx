@@ -1,36 +1,41 @@
-import { Children, createElement, ReactNode } from "react";
+import { Children, createElement, memo, ReactNode } from "react";
 import { Control, Controller } from 'react-hook-form'
 
 interface I_FormControllerProps {
   children: ReactNode[] | ReactNode;
   control: Control;
+  errors: any
 }
 
-export function FormControllerBind({ children, control }: I_FormControllerProps): any {
+function FormControllerBind({ children, control, errors }: I_FormControllerProps): any {
   return Children.map(children, (child: any) => {
     if (child?.props?.children) {
       //recursively step n and link. Kinda like the flattening of nested stuff
-      const reactChildren = FormControllerBind({ children: child.props.children, control })
+      const reactChildren = FormControllerBind({ children: child.props.children, control, errors })
       //handle Layouts
       return createElement(child.type, { ...child.props, children: reactChildren })
     }
-    if(child?.type?.render?.name === 'TextField2') {
+    const renderType = child?.type?.render?.name
+    if (renderType === 'TextField2') {
+      const name = child.props.name
+      const errorMessage = errors[name]?.message
       return (
         <Controller
-          name={child.props.name}
+          name={name}
           control={control}
-          defaultValue=""
-          //TODO rules={{}}
-          render={({ field, fieldState }) => (
+          render={({ field }) => (
             createElement(child.type, {
               ...field,
               ...child.props,
-              error: !!fieldState.error,
-              helperText: fieldState.error ? fieldState.error.message : null,
+              error: !!errorMessage,
+              helperText: errorMessage,
             })
           )}
-        />)
+        />
+      )
     }
     return child
   })
 }
+
+export default memo(FormControllerBind)
