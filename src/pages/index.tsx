@@ -8,19 +8,22 @@ import {
 } from "react-router-dom";
 import CssBaseline from "@mui/material/CssBaseline";
 import { AuthRoutes } from '@pages/authorized';
-import { Login } from '@pages/login';
-import { Event } from '@auth/event'
 import { Dashboard } from '@auth/dashboard';
+import { Event } from '@auth/event'
+import { Faq } from '@auth/faq';
+import { Login } from '@pages/login';
 import { Playlist } from '@auth/playlist';
 import { PrivateDashboard } from '@auth/private-dashboard';
 import { Profile } from '@auth/profile';
 import { Scheduler } from '@auth/scheduler';
-import { Faq } from '@auth/faq';
+
+import { light } from './theme';
 import './index.css'
+console.log(light)
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ThemeProvider theme={{}}>
+    <ThemeProvider theme={light}>
       <CssBaseline />
       <BrowserRouter>
         <Routes>

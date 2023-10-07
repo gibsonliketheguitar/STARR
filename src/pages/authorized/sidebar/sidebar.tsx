@@ -29,7 +29,7 @@ export function Sidebar() {
   const DrawerHeader = styled('div')(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
-    padding: theme.spacing(1.6, 2),
+    padding: theme.spacing(1.5, 1.5),
     justifyContent: 'flex-start',
 
   }));

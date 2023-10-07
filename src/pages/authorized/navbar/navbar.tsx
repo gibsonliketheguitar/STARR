@@ -1,13 +1,14 @@
 import React from 'react';
+
+import AccountCircle from '@mui/icons-material/AccountCircle';
 import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import IconButton from '@mui/material/IconButton';
 import LocalPostOfficeIcon from '@mui/icons-material/LocalPostOffice';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import MenuItem from '@mui/material/MenuItem';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 
 export function Navbar() {
   const [auth, setAuth] = React.useState(true);
@@ -30,7 +31,7 @@ export function Navbar() {
   }
 
   return (
-    <AppBar position='relative' sx={{ height: '66px', backgroundColor: 'black' }}>
+    <AppBar position='relative' sx={{ height: '66px', backgroundColor: (theme:any) => theme.palette.neutral[900] }}>
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           Logo here
