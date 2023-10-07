@@ -31,7 +31,6 @@ export function Sidebar() {
     alignItems: 'center',
     padding: theme.spacing(1.5, 1.5),
     justifyContent: 'flex-start',
-
   }));
 
   const SHARED_DASHBOARD = [
