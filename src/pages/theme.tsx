@@ -79,4 +79,7 @@ export const light = createTheme({
       fontSize: 16,
     }
   },
+  shape: {
+    borderRadius: 12
+  }
 })
