@@ -6,11 +6,11 @@ Completed
 - [x] Theming Design
 - [x] React Hook Form Integration with VOD
 - [x] client side login
+- [x] Husky  
 
 
 Next
 - [] DE
--   [] Husky  
 -   [] Github Actions
 -   [] Template for VScodes/snippets
 
@@ -65,3 +65,10 @@ Blog
 Visx
 - spider graph
 
+
+Time
+  - 8
+  - 2
+  - 6 
+  - 4
+  - 4

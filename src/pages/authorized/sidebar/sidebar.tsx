@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { styled } from "@mui/material";
 
 import Box from "@mui/material/Box";
@@ -67,53 +67,49 @@ export function Sidebar() {
       <Divider sx={{ color: "white" }} />
       <List>
         {SHARED_DASHBOARD.map(({ title, icon, path }) => (
-          <ListItem key={title} disablePadding sx={{ display: "block" }}>
-            <Link to={path}>
-              <ListItemButton
+          <ListItem key={title} disablePadding sx={{ display: "block" }} onClick={() => navigate(path)}>
+            <ListItemButton
+              sx={{
+                display: "flex",
+                minHeight: 48,
+                justifyContent: "center",
+                px: 2.5,
+              }}>
+              <ListItemIcon
                 sx={{
-                  display: "flex",
-                  minHeight: 48,
+                  minWidth: 0,
+                  mr: isOpen ? 3 : "auto",
                   justifyContent: "center",
-                  px: 2.5,
                 }}>
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: isOpen ? 3 : "auto",
-                    justifyContent: "center",
-                  }}>
-                  {React.createElement(icon)}
-                </ListItemIcon>
-                <ListItemText primary={title} sx={{ opacity: 0, color: "red" }} />
-              </ListItemButton>
-            </Link>
+                {React.createElement(icon)}
+              </ListItemIcon>
+              <ListItemText primary={title} sx={{ opacity: 0, color: "red" }} />
+            </ListItemButton>
           </ListItem>
         ))}
       </List>
       <Divider />
       <List>
         {SIDEBAR.map(({ title, icon, path, handleOnClick }) => (
-          <ListItem key={title} disablePadding sx={{ display: "block" }}>
-            <Link to={path}>
-              <ListItemButton
-                onClick={handleOnClick}
+          <ListItem key={title} disablePadding sx={{ display: "block" }} onClick={() => navigate(path)}>
+            <ListItemButton
+              onClick={handleOnClick}
+              sx={{
+                display: "flex",
+                minHeight: 48,
+                justifyContent: "center",
+                px: 2.5,
+              }}>
+              <ListItemIcon
                 sx={{
-                  display: "flex",
-                  minHeight: 48,
+                  minWidth: 0,
+                  mr: isOpen ? 3 : "auto",
                   justifyContent: "center",
-                  px: 2.5,
                 }}>
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: isOpen ? 3 : "auto",
-                    justifyContent: "center",
-                  }}>
-                  {React.createElement(icon, { sx: { color: "black" } })}
-                </ListItemIcon>
-                <ListItemText primary={title} sx={{ opacity: isOpen ? 1 : 0 }} />
-              </ListItemButton>
-            </Link>
+                {React.createElement(icon, { sx: { color: "black" } })}
+              </ListItemIcon>
+              <ListItemText primary={title} sx={{ opacity: isOpen ? 1 : 0 }} />
+            </ListItemButton>
           </ListItem>
         ))}
       </List>
