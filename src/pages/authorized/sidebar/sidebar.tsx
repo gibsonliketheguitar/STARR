@@ -43,7 +43,7 @@ export function Sidebar() {
   const SHARED_DASHBOARD = [{ title: "shared", icon: SpeedOutlinedIcon, path: "" }];
 
   const SIDEBAR = [
-    { title: "playlist", icon: SubscriptionsOutlinedIcon, path: "/playlist" },
+    { title: "session", icon: SubscriptionsOutlinedIcon, path: "/session" },
     { title: "events", icon: CalendarMonthOutlinedIcon, path: "/event" },
     {
       title: "scheduler",
