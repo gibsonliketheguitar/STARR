@@ -12,7 +12,7 @@ export type T_SessionAction = {
 
 export const useSessionStore = create<T_SessionState & T_SessionAction>((set, get) => ({
   sessions: [],
-  create: (payload: string) => set({ sessions: [...get().sessions, payload] }),
+  create: (payload: any) => set({ sessions: [...get().sessions, payload] }),
   delete: (sessionId: string) => set({ sessions: get().sessions.filter((ele) => ele.id !== sessionId) }),
   update: (sessionId: string, payload: any) =>
     set({
